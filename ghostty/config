@@ -1,0 +1,9 @@
+font-size = 20
+
+theme = ayu
+
+cursor-style = bar
+adjust-cursor-thickness = 25 
+cursor-style-blink = false
+
+shell-integration-features = no-cursor,no-sudo,no-title
