@@ -95,6 +95,48 @@ require("lazy").setup({
 			{ "<leader>u", "<cmd>UndotreeToggle<CR>", desc = "[T]oggle [U]ndotree" },
 		},
 	},
+
+	-- Adding Harpoon
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			local harpoon = require("harpoon")
+			harpoon:setup()
+
+			vim.keymap.set("n", "<leader>a", function()
+				harpoon:list():add()
+			end, { desc = "Harpoon: add file" })
+
+			vim.keymap.set("n", "<leader>o", function()
+				harpoon.ui:toggle_quick_menu(harpoon:list())
+			end, { desc = "Harpoon: quick menu" })
+
+			vim.keymap.set("n", "<leader>1", function()
+				harpoon:list():select(1)
+			end, { desc = "Harpoon: go to 1" })
+
+			vim.keymap.set("n", "<leader>2", function()
+				harpoon:list():select(2)
+			end, { desc = "Harpoon: go to 2" })
+
+			vim.keymap.set("n", "<leader>3", function()
+				harpoon:list():select(3)
+			end, { desc = "Harpoon: go to 3" })
+			vim.keymap.set("n", "<leader>4", function()
+				harpoon:list():select(4)
+			end, { desc = "Harpoon: go to 4" })
+			vim.keymap.set("n", "<leader>dr", function()
+				harpoon:list():remove()
+			end, { desc = "Remove current file from Harpoon" })
+
+			vim.keymap.set("n", "<leader>dc", function()
+				harpoon:list():clear()
+			end, { desc = "Clear harpoon list" })
+		end,
+	},
+
 	"NMAC427/guess-indent.nvim",
 	{
 		"lewis6991/gitsigns.nvim",
@@ -278,6 +320,7 @@ require("lazy").setup({
 			local servers = {
 				clangd = {},
 				pyright = {},
+				gopls = { single_file_support = true },
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -335,6 +378,7 @@ require("lazy").setup({
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				javascript = { "prettierd", "prettier", stop_after_first = true },
+				go = { "goimports", "gofmt" },
 			},
 		},
 	},
@@ -396,6 +440,8 @@ require("lazy").setup({
 					light = "latte",
 					dark = "mocha",
 				},
+				transparent_background = true,
+				no_italic = true,
 				styles = {
 					comments = {},
 					conditionals = {},
@@ -416,6 +462,9 @@ require("lazy").setup({
 					nvimtree = true,
 				},
 			})
+			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+			vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 		end,
 	},
 	{
@@ -456,4 +505,4 @@ require("lazy").setup({
 	require("einstein.plugins.autopairs"),
 })
 
-vim.cmd.colorscheme("retrobox")
+vim.cmd.colorscheme("catppuccin")
