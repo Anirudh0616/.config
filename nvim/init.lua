@@ -69,6 +69,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
+		"chomosuke/typst-preview.nvim",
+		build = function()
+			require("typst-preview").update()
+		end,
+	},
+	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
 		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' }, -- if you use standalone mini plugins
@@ -330,6 +336,7 @@ require("lazy").setup({
 						},
 					},
 				},
+				tinymist = {},
 			}
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, { "stylua" })
@@ -493,6 +500,7 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
+				"typst",
 			},
 			auto_install = true,
 			highlight = {
@@ -504,5 +512,9 @@ require("lazy").setup({
 	},
 	require("einstein.plugins.autopairs"),
 })
+
+-- Custom Keymaps
+-- Typst Preview
+vim.keymap.set("n", "<leader>tp", "<cmd>TypstPreview<CR>", { desc = "Toggle Typst Preview" })
 
 vim.cmd.colorscheme("catppuccin")

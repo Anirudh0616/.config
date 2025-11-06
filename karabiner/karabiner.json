@@ -39,6 +39,7 @@
                     },
                     {
                         "description": "Invert 9 and ]",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -63,6 +64,7 @@
                     },
                     {
                         "description": "Invert 8 and } ; move * to } key",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -108,6 +110,7 @@
                     },
                     {
                         "description": "Invert 7 and ) ; move & to ]",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -150,6 +153,7 @@
                     },
                     {
                         "description": "Invert 6 and ^",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -179,6 +183,7 @@
                     },
                     {
                         "description": "Invert 5 and %",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -208,6 +213,7 @@
                     },
                     {
                         "description": "Invert 4 and ( ; move $ to 0",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -261,6 +267,7 @@
                     },
                     {
                         "description": "Invert 3 and { ; move # to { key",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -306,6 +313,7 @@
                     },
                     {
                         "description": "Invert 2 and [ ; move @ to [",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -343,6 +351,7 @@
                     },
                     {
                         "description": "Invert 1 and ! (shift first)",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
