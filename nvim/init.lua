@@ -144,6 +144,12 @@ require("lazy").setup({
 	},
 
 	"NMAC427/guess-indent.nvim",
+	-- {
+	-- 	"saghen/blink.indent",
+	-- 	--- @module 'blink.indent'
+	-- 	--- @type blink.indent.Config
+	-- 	-- opts = {},
+	-- },
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
@@ -437,6 +443,19 @@ require("lazy").setup({
 		},
 	},
 	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		config = function()
+			require("rose-pine").setup({
+				variant = "main",
+				styles = {
+					italic = false,
+				},
+			})
+			vim.cmd("colorscheme rose-pine")
+		end,
+	},
+	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
@@ -511,10 +530,11 @@ require("lazy").setup({
 		},
 	},
 	require("einstein.plugins.autopairs"),
+	require("einstein.plugins.tpipeline"),
 })
 
 -- Custom Keymaps
 -- Typst Preview
 vim.keymap.set("n", "<leader>tp", "<cmd>TypstPreview<CR>", { desc = "Toggle Typst Preview" })
 
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("rose-pine")

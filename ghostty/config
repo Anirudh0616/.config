@@ -1,6 +1,6 @@
 font-size = 20
 
-theme = ayu
+theme = Rose Pine
 
 cursor-style = bar
 adjust-cursor-thickness = 25 
@@ -8,5 +8,3 @@ cursor-style-blink = false
 
 shell-integration-features = no-cursor,no-sudo,no-title
 
-background-opacity = 0.9
-background-blur-radius = 20
