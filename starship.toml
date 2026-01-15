@@ -1,3 +1,5 @@
+# new 
+
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
@@ -19,19 +21,20 @@ $rust\
 $scala\
 $conda\
 $python\n\
-[󱞪](fg:iris) \
+[>](fg:iris) \
 """
 
-palette = "rose-pine"
+palette = "vague"
 
-[palettes.rose-pine]
-overlay = '#26233a'
-love = '#eb6f92'
-gold = '#f6c177'
-rose = '#ebbcba'
-pine = '#31748f'
-foam = '#9ccfd8'
-iris = '#c4a7e7'
+[palettes.vague]
+overlay = '#1E1E26'
+love = '#D96B7B'
+gold = '#EBBE88'
+rose = '#BCA0C2'
+pine = '#7192A8'
+foam = '#82A36A'
+iris = '#7B9CFF'
+silver = '#CACACA'
 
 [directory]
 format = "[](fg:overlay)[ $path ]($style)[](fg:overlay) "
@@ -82,8 +85,6 @@ format = "[](fg:overlay)[  $user ]($style)[](fg:overlay) "
 show_always = true
 style_root = "bg:overlay fg:iris"
 style_user = "bg:overlay fg:iris"
-
-# Languages
 
 [c]
 style = "bg:overlay fg:pine"
@@ -162,3 +163,4 @@ style = "bg:overlay fg:pine"
 format = " [](fg:overlay)[ $symbol$environment ]($style)[](fg:overlay)"
 disabled = false
 symbol = '🅒 '
+

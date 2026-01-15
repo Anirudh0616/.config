@@ -1,10 +1,9 @@
 font-size = 20
 
-theme = Rose Pine
+theme = Vague
 
-cursor-style = bar
-adjust-cursor-thickness = 25 
+cursor-style = block 
 cursor-style-blink = false
+adjust-cursor-thickness = 3
 
 shell-integration-features = no-cursor,no-sudo,no-title
-

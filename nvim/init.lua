@@ -20,11 +20,22 @@ vim.o.signcolumn = "yes"
 vim.o.swapfile = false
 vim.o.timeoutlen = 300
 
-vim.o.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+--vim.o.list = true
+--vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 vim.opt.inccommand = "split"
 vim.o.cursorline = true
+
+vim.opt.guicursor = {
+	"n-v-c:block",
+	"i-ci-ve:ver50",
+	"r-cr:hor20",
+	"o:hor50",
+}
 
 vim.o.scrolloff = 10
 
@@ -376,18 +387,13 @@ require("lazy").setup({
 		},
 		opts = {
 			notify_on_error = false,
-			format_on_save = function(bufnr)
-				local disable_filetypes = { c = true, cpp = true }
-				if disable_filetypes[vim.bo[bufnr].filetype] then
-					return nil
-				else
-					return {
-						timeout_ms = 499,
-						lsp_format = "fallback",
-					}
-				end
-			end,
+			format_on_save = {
+				timeout_ms = 499,
+				lsp_fallback = "true",
+			},
 			formatters_by_ft = {
+				c = { "clang-format" },
+				cpp = { "clang-format" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				javascript = { "prettierd", "prettier", stop_after_first = true },
@@ -442,57 +448,71 @@ require("lazy").setup({
 			signature = { enabled = true },
 		},
 	},
+	-- {
+	-- 	"rose-pine/neovim",
+	-- 	name = "rose-pine",
+	-- 	config = function()
+	-- 		require("rose-pine").setup({
+	-- 			variant = "main",
+	-- 			styles = {
+	-- 				italic = false,
+	-- 			},
+	-- 		})
+	-- 		vim.cmd("colorscheme rose-pine")
+	-- 	end,
+	-- },
 	{
-		"rose-pine/neovim",
-		name = "rose-pine",
+		"vague-theme/vague.nvim",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other plugins
 		config = function()
-			require("rose-pine").setup({
-				variant = "main",
-				styles = {
-					italic = false,
-				},
+			-- NOTE: you do not need to call setup if you don't want to.
+			require("vague").setup({
+				-- optional configuration here
+				transparent = false,
+				italic = false,
 			})
-			vim.cmd("colorscheme rose-pine")
+			-- vim.cmd("colorscheme vague")
 		end,
 	},
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
-		config = function()
-			require("catppuccin").setup({
-				flavour = "mocha",
-				background = {
-					light = "latte",
-					dark = "mocha",
-				},
-				transparent_background = true,
-				no_italic = true,
-				styles = {
-					comments = {},
-					conditionals = {},
-					loops = {},
-					functions = {},
-					keywords = {},
-					strings = {},
-					variables = {},
-					numbers = {},
-					booleans = {},
-					properties = {},
-					types = {},
-					operators = {},
-				},
-				integrations = {
-					telescope = true,
-					treesitter = true,
-					nvimtree = true,
-				},
-			})
-			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-			vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-		end,
-	},
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	name = "catppuccin",
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("catppuccin").setup({
+	-- 			flavour = "mocha",
+	-- 			background = {
+	-- 				light = "latte",
+	-- 				dark = "mocha",
+	-- 			},
+	-- 			transparent_background = true,
+	-- 			no_italic = true,
+	-- 			styles = {
+	-- 				comments = {},
+	-- 				conditionals = {},
+	-- 				loops = {},
+	-- 				functions = {},
+	-- 				keywords = {},
+	-- 				strings = {},
+	-- 				variables = {},
+	-- 				numbers = {},
+	-- 				booleans = {},
+	-- 				properties = {},
+	-- 				types = {},
+	-- 				operators = {},
+	-- 			},
+	-- 			integrations = {
+	-- 				telescope = true,
+	-- 				treesitter = true,
+	-- 				nvimtree = true,
+	-- 			},
+	-- 		})
+	-- 		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	-- 		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+	-- 		vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+	-- 	end,
+	-- },
 	{
 		"echasnovski/mini.nvim",
 		config = function()
@@ -530,11 +550,11 @@ require("lazy").setup({
 		},
 	},
 	require("einstein.plugins.autopairs"),
-	require("einstein.plugins.tpipeline"),
+	-- require("einstein.plugins.tpipeline"),
 })
 
 -- Custom Keymaps
 -- Typst Preview
 vim.keymap.set("n", "<leader>tp", "<cmd>TypstPreview<CR>", { desc = "Toggle Typst Preview" })
 
-vim.cmd.colorscheme("rose-pine")
+vim.cmd.colorscheme("vague")
