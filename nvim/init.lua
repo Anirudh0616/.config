@@ -80,6 +80,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
+		"tpope/vim-fugitive",
+		config = function()
+			vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Opens fugitive nvim" })
+		end,
+	},
+	{
 		"chomosuke/typst-preview.nvim",
 		build = function()
 			require("typst-preview").update()
