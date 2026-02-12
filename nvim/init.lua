@@ -119,6 +119,7 @@ require("lazy").setup({
 		},
 	},
 
+	-- there's no way
 	-- Adding Harpoon
 	{
 		"ThePrimeagen/harpoon",
