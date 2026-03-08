@@ -1,4 +1,3 @@
-#copy of my zshrc
 export PATH="/opt/homebrew/bin:$PATH"
 
 eval "$(starship init zsh)"
@@ -13,3 +12,4 @@ alias act="source venv/bin/activate"
 
 alias conf="nvim ~/.config/nvim/init.lua"
 
+[ -z "$TMUX" ] && { tmux attach || exec tmux new-session;  }
