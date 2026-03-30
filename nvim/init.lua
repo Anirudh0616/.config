@@ -364,6 +364,8 @@ vim.lsp.enable({
 	"efm",
 })
 
+local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
+
 vim.api.nvim_create_autocmd("BufWritePre", {
 	group = augroup,
 	pattern = {
