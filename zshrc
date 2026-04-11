@@ -1,12 +1,12 @@
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/nvim/bin:$PATH"
 
 eval "$(starship init zsh)"
 
-alias vim=nvim
-alias vi=nvim
-alias im=nvim
 alias ls="ls -C -t -U -A -p --color=auto" 
 alias sl="ls -C -t -U -A -p --color=auto" 
+alias vi="nvim"
 
 alias act="source venv/bin/activate"
 

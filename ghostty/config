@@ -1,4 +1,4 @@
-font-size = 24
+font-size = 25
 
 theme = Vague
 
@@ -7,3 +7,11 @@ cursor-style-blink = false
 adjust-cursor-thickness = 3
 
 shell-integration-features = no-cursor,no-sudo,no-title
+
+background = #1e1e1e
+foreground = #c8c8c8
+
+background-opacity = 0.95
+
+cursor-color = #aaaaaa
+selection-background = #3a3a3a

@@ -1,10 +1,14 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 vim.o.number = true
 vim.o.relativenumber = true
 
+vim.g.have_nerd_font = true
+
 -- Go back to nvim .
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", "<CMD>Oil<CR>")
 
 local undodir = vim.fn.expand("~/.vim/undodir")
 
@@ -20,7 +24,7 @@ vim.o.timeoutlen = 300
 
 vim.o.autoread = true
 vim.o.errorbells = false
-
+vim.opt.termguicolors = true
 vim.opt.selection = "inclusive"
 
 vim.opt.clipboard:append("unnamedplus")
@@ -33,13 +37,26 @@ vim.opt.expandtab = true
 vim.opt.inccommand = "split"
 vim.o.cursorline = true
 
+-- Groups and move text up and down in visual mode
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Centers cursor to the center of the page for half page jumping
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- Centers cursor to the center for search jumping
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+vim.o.showmode = false
+
 vim.o.hlsearch = true
 vim.o.incsearch = true
 
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
-vim.opt.colorcolumn = "100"
+vim.opt.colorcolumn = "120"
 
 vim.opt.guicursor = ""
 
@@ -82,8 +99,10 @@ vim.pack.add({
 		version = vim.version.range("1.*"),
 	},
 	"https://github.com/L3MON4D3/LuaSnip",
+	"https://github.com/stevearc/oil.nvim",
 })
 
+vim.cmd("packadd nvim-lspconfig")
 local function packadd(name)
 	vim.cmd("packadd " .. name)
 end
@@ -91,11 +110,11 @@ packadd("nvim-treesitter")
 packadd("gitsigns.nvim")
 packadd("mini.nvim")
 -- LSP
-packadd("nvim-lspconfig")
 packadd("mason.nvim")
 packadd("efmls-configs-nvim")
 packadd("blink.cmp")
 packadd("LuaSnip")
+packadd("oil.nvim")
 
 local setup_treesitter = function()
 	local treesitter = require("nvim-treesitter")
@@ -104,6 +123,7 @@ local setup_treesitter = function()
 		"vim",
 		"vimdoc",
 		"typst",
+		"rust",
 		"c",
 		"cpp",
 		"html",
@@ -148,7 +168,7 @@ require("mason").setup({})
 require("vague").setup({
 	-- optional configuration here
 	italic = false,
-	transparent = false,
+	transparent = true,
 })
 -- require("modus-themes").setup({
 -- 	-- optional configuration here
@@ -162,8 +182,25 @@ require("nvim-autopairs").setup({
 	config = true,
 })
 
+require("oil").setup({
+	default_file_explorer = true,
+	columns = {
+		"icon",
+	},
+	view_options = {
+		show_hidden = true,
+	},
+	float = {
+		max_width = 0.3,
+		max_height = 0.6,
+		border = "rounded",
+	},
+	vim.keymap.set("n", "<leader>pp", require("oil").toggle_float),
+})
+
 require("mini.surround").setup()
 local statusline = require("mini.statusline")
+require("mini.icons").setup()
 statusline.setup({ use_icons = vim.g.have_nerd_font })
 
 require("gitsigns").setup({
@@ -183,7 +220,7 @@ vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" 
 vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 vim.keymap.set("n", "<leader>sf", function()
 	builtin.find_files({
-		cwd = "~/dev",
+		cwd = "~/dev/",
 	})
 end, { desc = "[S]earch [F]iles in Code folder" })
 vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
@@ -260,10 +297,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 require("blink.cmp").setup({
 	keymap = {
 		preset = "none",
-		["<leader>gt"] = { "show", "hide" },
-		["<CR>"] = { "accept", "fallback" },
-		["<C-j>"] = { "select_next", "fallback" },
-		["<C-k>"] = { "select_prev", "fallback" },
+		["<C-g>"] = { "show", "hide" },
+		["<C-y>"] = { "accept", "fallback" },
+		["<C-n>"] = { "select_next", "fallback" },
+		["<C-p>"] = { "select_prev", "fallback" },
 		["<Tab>"] = { "snippet_forward", "fallback" },
 		["<S-Tab>"] = { "snippet_backward", "fallback" },
 	},
@@ -297,6 +334,15 @@ vim.lsp.config("lua_ls", {
 vim.lsp.config("pyright", {})
 vim.lsp.config("bashls", {})
 vim.lsp.config("clangd", {})
+vim.lsp.config("rust_analyzer", {
+	settings = {
+		["rust-analyzer"] = {
+			check = {
+				command = "clippy",
+			},
+		},
+	},
+})
 
 do
 	local luacheck = require("efmls-configs.linters.luacheck")
@@ -307,6 +353,9 @@ do
 
 	local prettier_d = require("efmls-configs.formatters.prettier_d")
 	local eslint_d = require("efmls-configs.linters.eslint_d")
+
+	-- local bacon = require("efmls-configs.formatters.bacon")
+	local rustfmt = require("efmls-configs.formatters.rustfmt")
 
 	local fixjson = require("efmls-configs.formatters.fixjson")
 
@@ -320,8 +369,14 @@ do
 	local gofumpt = require("efmls-configs.formatters.gofumpt")
 
 	vim.lsp.config("efm", {
+		capabilities = vim.tbl_deep_extend(
+			"force",
+			require("blink.cmp").get_lsp_capabilities(),
+			{ offsetEncoding = "utf-8" }
+		),
 		filetypes = {
 			"c",
+			"rust",
 			"cpp",
 			"css",
 			"go",
@@ -342,6 +397,7 @@ do
 				go = { gofumpt, go_revive },
 				cpp = { clangfmt, cpplint },
 				css = { prettier_d },
+				rust = { rustfmt },
 				html = { prettier_d },
 				javascript = { eslint_d, prettier_d },
 				javascriptreact = { eslint_d, prettier_d },
@@ -355,13 +411,13 @@ do
 		},
 	})
 end
-
 vim.lsp.enable({
 	"lua_ls",
 	"pyright",
 	"bashls",
 	"clangd",
 	"efm",
+	"rust_analyzer",
 })
 
 local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
@@ -375,6 +431,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		"*.js",
 		"*.jsx",
 		"*.ts",
+		"*.rs",
 		"*.tsx",
 		"*.json",
 		"*.css",
