@@ -73,6 +73,10 @@ vim.keymap.set(
 	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
 	{ desc = "[R]eplace all instances of word under cursor" }
 )
+
+vim.keymap.set("n", "<C-f>", "<CMD>Open .<CR>", { desc = "Open current directory in Finder" })
+vim.keymap.set("n", "<leader>a", ":edit #<CR>", { desc = "Switch to alternate buffer" })
+
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
@@ -86,6 +90,7 @@ vim.pack.add({
 	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/nvim-telescope/telescope.nvim",
 	"https://github.com/windwp/nvim-autopairs",
+	"https://github.com/chomosuke/typst-preview.nvim",
 	{
 		src = "https://github.com/nvim-treesitter/nvim-treesitter",
 		branch = "main",
@@ -115,6 +120,7 @@ packadd("efmls-configs-nvim")
 packadd("blink.cmp")
 packadd("LuaSnip")
 packadd("oil.nvim")
+packadd("typst-preview.nvim")
 
 local setup_treesitter = function()
 	local treesitter = require("nvim-treesitter")
@@ -165,6 +171,9 @@ end
 setup_treesitter()
 
 require("mason").setup({})
+require("typst-preview").setup({
+	vim.keymap.set("n", "<leader>tp", "<CMD>TypstPreview<CR>", { desc = "Open Typst Preview in Browser" }),
+})
 require("vague").setup({
 	-- optional configuration here
 	italic = false,
@@ -188,7 +197,7 @@ require("oil").setup({
 		"icon",
 	},
 	view_options = {
-		show_hidden = true,
+		show_hidden = false,
 	},
 	float = {
 		max_width = 0.3,
@@ -213,6 +222,31 @@ require("gitsigns").setup({
 	},
 })
 
+require("telescope").setup({
+	defaults = {
+		preview = { treesitter = true },
+		color_devicons = true,
+		sorting_strategy = "ascending",
+		borderchars = {
+			"", -- top
+			"", -- right
+			"", -- bottom
+			"", -- left
+			"", -- top-left
+			"", -- top-right
+			"", -- bottom-right
+			"", -- bottom-left
+		},
+		path_displays = { "smart" },
+		layout_config = {
+			height = 100,
+			width = 400,
+			prompt_position = "bottom",
+			preview_cutoff = 45,
+		},
+	},
+})
+
 pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "ui-select")
 local builtin = require("telescope.builtin")
@@ -230,6 +264,9 @@ vim.keymap.set("n", "<leader>sg", function()
 		cwd = "~/dev",
 	})
 end, { desc = "[S]earch by [G]rep" })
+
+vim.keymap.set("n", "<leader>G", builtin.git_commits, { desc = "Pick through Git commits" })
+
 vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
