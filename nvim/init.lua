@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- local colors = {}
+
 vim.o.number = true
 vim.o.relativenumber = true
 
@@ -20,7 +22,7 @@ vim.o.undofile = true
 vim.o.undodir = undodir
 
 vim.o.swapfile = false
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 400
 
 vim.o.autoread = true
 vim.o.errorbells = false
@@ -175,9 +177,40 @@ require("typst-preview").setup({
 	vim.keymap.set("n", "<leader>tp", "<CMD>TypstPreview<CR>", { desc = "Open Typst Preview in Browser" }),
 })
 require("vague").setup({
-	-- optional configuration here
 	italic = false,
-	transparent = true,
+	transparent = false,
+	colors = {
+		bg = "#18181c",
+		inactiveBg = "#202028",
+		fg = "#b6b8c8",
+
+		floatBorder = "#7a7d90",
+		line = "#2a2c36",
+		comment = "#707388",
+
+		builtin = "#aebfc2",
+		func = "#d49d9d",
+		string = "#d4b394",
+		number = "#d0aa84",
+		property = "#afafcc",
+		constant = "#9999c2",
+		parameter = "#b999ba",
+
+		visual = "#333738",
+
+		error = "#c07a8a",
+		warning = "#d6b07c",
+		hint = "#8c9ed6",
+
+		operator = "#9aa3b5",
+		keyword = "#8fa5bb",
+		type = "#a7b7bf",
+
+		search = "#4a5568",
+
+		plus = "#8fa87a",
+		delta = "#d6b07c",
+	},
 })
 -- require("modus-themes").setup({
 -- 	-- optional configuration here
@@ -290,7 +323,9 @@ end, { desc = "[S]earch [N]eovim files" })
 vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { desc = "[T]oggle [U]ndotree" })
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Opens fugitive nvim" })
 
-vim.cmd("colorscheme vague")
+local default_color = "vague"
+--
+vim.cmd("colorscheme " .. default_color)
 
 vim.diagnostic.config({
 	severity_sort = true,
