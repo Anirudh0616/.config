@@ -180,9 +180,9 @@ require("vague").setup({
 	italic = false,
 	transparent = false,
 	colors = {
-		bg = "#18181c",
-		inactiveBg = "#202028",
-		fg = "#b6b8c8",
+		-- bg = "#212121",
+		-- inactiveBg = "#212121",
+		-- fg = "#b6b8c8",
 
 		floatBorder = "#7a7d90",
 		line = "#2a2c36",
