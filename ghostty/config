@@ -1,5 +1,5 @@
-font-size = 25
-# font-family = "Hack Nerd Font"
+font-size = 32 
+# font-family = "Px437 IBM VGA 8x16"
 #
 theme = Vague
 palette-generate = false

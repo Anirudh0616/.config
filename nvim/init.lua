@@ -1,8 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- local colors = {}
-
 vim.o.number = true
 vim.o.relativenumber = true
 
@@ -107,6 +105,7 @@ vim.pack.add({
 	},
 	"https://github.com/L3MON4D3/LuaSnip",
 	"https://github.com/stevearc/oil.nvim",
+	"https://github.com/sphamba/smear-cursor.nvim",
 })
 
 vim.cmd("packadd nvim-lspconfig")
@@ -123,6 +122,7 @@ packadd("blink.cmp")
 packadd("LuaSnip")
 packadd("oil.nvim")
 packadd("typst-preview.nvim")
+-- packadd("smear_cursor")
 
 local setup_treesitter = function()
 	local treesitter = require("nvim-treesitter")
@@ -238,6 +238,18 @@ require("oil").setup({
 		border = "rounded",
 	},
 	vim.keymap.set("n", "<leader>pp", require("oil").toggle_float),
+})
+
+require("smear_cursor").setup({
+	opts = {
+		stiffness = 0.5,
+		trailing_stiffness = 0.5,
+		matrix_pixel_threshold = 0.5,
+		stiffness_insert_mode = 0.7,
+		damping = 0.95,
+		hide_target_hack = true,
+		never_draw_over_target = true,
+	},
 })
 
 require("mini.surround").setup()
