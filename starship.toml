@@ -24,17 +24,38 @@ $python\n\
 [>](fg:iris) \
 """
 
-palette = "vague"
+palette = "base16_black_metal"
 
-[palettes.vague]
-overlay = '#1E1E26'
-love = '#D96B7B'
-gold = '#EBBE88'
-rose = '#BCA0C2'
-pine = '#7192A8'
-foam = '#82A36A'
-iris = '#7B9CFF'
-silver = '#CACACA'
+# [palettes.vague]
+# overlay = '#1E1E26'
+# love = '#D96B7B'
+# gold = '#EBBE88'
+# rose = '#BCA0C2'
+# pine = '#7192A8'
+# foam = '#82A36A'
+# iris = '#7B9CFF'
+# silver = '#CACACA'
+
+# [palettes.evergarden]
+# # overlay = '#1d2428'      # background
+# overlay = '#1E1E26'
+# love    = '#f57f82'      # red
+# gold    = '#f5d098'      # yellow
+# rose    = '#f3c0e5'      # pink
+# pine    = '#b2cfed'      # blue
+# foam    = '#addeb9'      # cyan/green blend
+# iris    = '#cae0a7'      # green
+# silver  = '#f8f9e8'      # foreground
+
+[palettes.base16_black_metal]
+overlay = '#121212'
+love    = '#5f8787'
+gold    = '#a06666'
+rose    = '#dd9999'
+pine    = '#888888'
+foam    = '#aaaaaa'
+iris    = '#999999'
+silver  = '#c1c1c1'
 
 [directory]
 format = "[](fg:overlay)[ $path ]($style)[](fg:overlay) "

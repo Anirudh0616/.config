@@ -4,6 +4,14 @@
       "rev": "a62e1083a3cfe8b6b206e7d3d33a51091df25357",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
+    "base16-black-metal-scheme": {
+      "rev": "c7a32bec8105a1ceddb9fcc90b713dabde5e7e5e",
+      "src": "https://github.com/metalelf0/base16-black-metal-scheme"
+    },
+    "base16-nvim": {
+      "rev": "6b4f4a07b8b0c23a5cd3740631d96a97d7ccec09",
+      "src": "https://github.com/RRethy/base16-nvim"
+    },
     "blink.cmp": {
       "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/saghen/blink.cmp",
@@ -13,9 +21,17 @@
       "rev": "5dc52088c231f2721f545570fcb541b04802ce6b",
       "src": "https://github.com/creativenull/efmls-configs-nvim"
     },
+    "evergarden": {
+      "rev": "762a37afe2e242144355fafe385d638ec347ec48",
+      "src": "https://codeberg.org/evergarden/nvim.git"
+    },
     "gitsigns.nvim": {
       "rev": "6d808f99bd63303646794406e270bd553ad7792e",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "kanso.nvim": {
+      "rev": "1afbbb449aa0254823dbe1932e3cbb51886ff9fe",
+      "src": "https://github.com/webhooked/kanso.nvim"
     },
     "mason-lspconfig.nvim": {
       "rev": "0c2823e0418f3d9230ff8b201c976e84de1cb401",

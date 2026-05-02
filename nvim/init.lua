@@ -58,7 +58,9 @@ vim.o.smartcase = true
 
 vim.opt.colorcolumn = "120"
 
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = ""
+-- vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20"
+-- vim.opt.guicursor = "a:block"
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set(
@@ -82,7 +84,7 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 
 vim.pack.add({
 	-- "https://github.com/miikanissi/modus-themes.nvim",
-	"https://github.com/vague-theme/vague.nvim",
+	-- "https://github.com/vague-theme/vague.nvim",
 	"https://github.com/tpope/vim-fugitive",
 	"https://github.com/mbbill/undotree",
 	"https://github.com/lewis6991/gitsigns.nvim",
@@ -106,12 +108,21 @@ vim.pack.add({
 	"https://github.com/L3MON4D3/LuaSnip",
 	"https://github.com/stevearc/oil.nvim",
 	"https://github.com/sphamba/smear-cursor.nvim",
+	-- {
+	-- 	src = "https://codeberg.org/evergarden/nvim.git",
+	-- 	name = "evergarden",
+	-- },
+	-- "https://github.com/webhooked/kanso.nvim",
+	"https://github.com/RRethy/base16-nvim",
 })
 
 vim.cmd("packadd nvim-lspconfig")
 local function packadd(name)
 	vim.cmd("packadd " .. name)
 end
+
+packadd("base16-nvim")
+
 packadd("nvim-treesitter")
 packadd("gitsigns.nvim")
 packadd("mini.nvim")
@@ -176,42 +187,70 @@ require("mason").setup({})
 require("typst-preview").setup({
 	vim.keymap.set("n", "<leader>tp", "<CMD>TypstPreview<CR>", { desc = "Open Typst Preview in Browser" }),
 })
-require("vague").setup({
-	italic = false,
-	transparent = false,
-	colors = {
-		-- bg = "#212121",
-		-- inactiveBg = "#212121",
-		-- fg = "#b6b8c8",
 
-		floatBorder = "#7a7d90",
-		line = "#2a2c36",
-		comment = "#707388",
+-- require("evergarden").setup({
+-- 	theme = {
+-- 		variant = "winter",
+-- 		theme = "green",
+-- 	},
+-- 	style = {
+-- 		tabline = { "reverse" },
+-- 		search = { "bold", "reverse" },
+-- 		incsearch = { "bold", "reverse" },
+-- 		types = { "bold" },
+-- 		keyword = { "bold" },
+-- 		comment = { "italic" },
+-- 	},
+-- 	overrides = {
+-- 		Normal = {
+-- 			-- fg = "#b6b8c8",
+-- 			-- bg = "#0d0d0f",
+-- 		},
+-- 	},
+-- })
 
-		builtin = "#aebfc2",
-		func = "#d49d9d",
-		string = "#d4b394",
-		number = "#d0aa84",
-		property = "#afafcc",
-		constant = "#9999c2",
-		parameter = "#b999ba",
+-- require("base16-black-metal").setup({})
 
-		visual = "#333738",
+-- require("kanso").setup({
+-- 	italics = false,
+-- })
 
-		error = "#c07a8a",
-		warning = "#d6b07c",
-		hint = "#8c9ed6",
-
-		operator = "#9aa3b5",
-		keyword = "#8fa5bb",
-		type = "#a7b7bf",
-
-		search = "#4a5568",
-
-		plus = "#8fa87a",
-		delta = "#d6b07c",
-	},
-})
+-- require("vague").setup({
+-- 	italic = false,
+-- 	transparent = false,
+-- 	colors = {
+-- 		-- bg = "#212121",
+-- 		-- inactiveBg = "#212121",
+-- 		-- fg = "#b6b8c8",
+--
+-- 		floatBorder = "#7a7d90",
+-- 		line = "#2a2c36",
+-- 		comment = "#707388",
+--
+-- 		builtin = "#aebfc2",
+-- 		func = "#d49d9d",
+-- 		string = "#d4b394",
+-- 		number = "#d0aa84",
+-- 		property = "#afafcc",
+-- 		constant = "#9999c2",
+-- 		parameter = "#b999ba",
+--
+-- 		visual = "#333738",
+--
+-- 		error = "#c07a8a",
+-- 		warning = "#d6b07c",
+-- 		hint = "#8c9ed6",
+--
+-- 		operator = "#9aa3b5",
+-- 		keyword = "#8fa5bb",
+-- 		type = "#a7b7bf",
+--
+-- 		search = "#4a5568",
+--
+-- 		plus = "#8fa87a",
+-- 		delta = "#d6b07c",
+-- 	},
+-- })
 -- require("modus-themes").setup({
 -- 	-- optional configuration here
 -- 	style = "modus_vivendi",
@@ -242,13 +281,13 @@ require("oil").setup({
 
 require("smear_cursor").setup({
 	opts = {
-		stiffness = 0.5,
-		trailing_stiffness = 0.5,
+		stiffness = 0.3,
+		trailing_stiffness = 0.2,
 		matrix_pixel_threshold = 0.5,
 		stiffness_insert_mode = 0.7,
-		damping = 0.95,
-		hide_target_hack = true,
-		never_draw_over_target = true,
+		damping = 0.8,
+		-- hide_target_hack = true,
+		-- never_draw_over_target = true,
 	},
 })
 
@@ -335,9 +374,8 @@ end, { desc = "[S]earch [N]eovim files" })
 vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { desc = "[T]oggle [U]ndotree" })
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Opens fugitive nvim" })
 
-local default_color = "vague"
---
-vim.cmd("colorscheme " .. default_color)
+-- Set colorscheme
+vim.cmd.colorscheme("base16-black-metal")
 
 vim.diagnostic.config({
 	severity_sort = true,
@@ -428,6 +466,12 @@ vim.lsp.config("rust_analyzer", {
 	},
 })
 
+vim.lsp.config("tinymist", {
+	cmd = { vim.fn.stdpath("data") .. "/mason/bin/tinymist" },
+	filetypes = { "typst" },
+	root_marker = { "typst.toml", " .git" },
+})
+
 do
 	local luacheck = require("efmls-configs.linters.luacheck")
 	local stylua = require("efmls-configs.formatters.stylua")
@@ -502,6 +546,7 @@ vim.lsp.enable({
 	"clangd",
 	"efm",
 	"rust_analyzer",
+	"tinymist",
 })
 
 local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })

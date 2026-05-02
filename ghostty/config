@@ -1,7 +1,8 @@
 font-size = 32 
 # font-family = "Px437 IBM VGA 8x16"
 #
-theme = Vague
+theme = base16-black-metal
 palette-generate = false
 background-opacity-cells=true
+
 
