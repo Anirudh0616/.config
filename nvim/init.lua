@@ -114,6 +114,7 @@ vim.pack.add({
 	-- },
 	-- "https://github.com/webhooked/kanso.nvim",
 	"https://github.com/RRethy/base16-nvim",
+	"https://github.com/folke/which-key.nvim",
 })
 
 vim.cmd("packadd nvim-lspconfig")
@@ -122,6 +123,7 @@ local function packadd(name)
 end
 
 packadd("base16-nvim")
+-- packadd("which-key")
 
 packadd("nvim-treesitter")
 packadd("gitsigns.nvim")
@@ -183,6 +185,7 @@ end
 
 setup_treesitter()
 
+require("which-key").setup({})
 require("mason").setup({})
 require("typst-preview").setup({
 	vim.keymap.set("n", "<leader>tp", "<CMD>TypstPreview<CR>", { desc = "Open Typst Preview in Browser" }),
@@ -209,7 +212,7 @@ require("typst-preview").setup({
 -- 	},
 -- })
 
--- require("base16-black-metal").setup({})
+-- require("base16-colorscheme").setup({})
 
 -- require("kanso").setup({
 -- 	italics = false,
@@ -376,6 +379,15 @@ vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Opens fugitive nvim" })
 
 -- Set colorscheme
 vim.cmd.colorscheme("base16-black-metal")
+
+-- disable italics
+local hl_groups = vim.api.nvim_get_hl(0, {})
+
+for key, hl_group in pairs(hl_groups) do
+	if hl_group.italic then
+		vim.api.nvim_set_hl(0, key, vim.tbl_extend("force", hl_group, { italic = false }))
+	end
+end
 
 vim.diagnostic.config({
 	severity_sort = true,
