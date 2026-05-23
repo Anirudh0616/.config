@@ -1,7 +1,7 @@
 {
   "plugins": {
     "LuaSnip": {
-      "rev": "a62e1083a3cfe8b6b206e7d3d33a51091df25357",
+      "rev": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
     "base16-black-metal-scheme": {
@@ -9,7 +9,7 @@
       "src": "https://github.com/metalelf0/base16-black-metal-scheme"
     },
     "base16-nvim": {
-      "rev": "6b4f4a07b8b0c23a5cd3740631d96a97d7ccec09",
+      "rev": "23e5128eb5f629c29532c24a1e733cbe019f05bb",
       "src": "https://github.com/RRethy/base16-nvim"
     },
     "blink.cmp": {
@@ -22,11 +22,11 @@
       "src": "https://github.com/creativenull/efmls-configs-nvim"
     },
     "evergarden": {
-      "rev": "762a37afe2e242144355fafe385d638ec347ec48",
+      "rev": "347c62833eb1f1e80c3ae275b1122c2173c47614",
       "src": "https://codeberg.org/evergarden/nvim.git"
     },
     "gitsigns.nvim": {
-      "rev": "6d808f99bd63303646794406e270bd553ad7792e",
+      "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "kanso.nvim": {
@@ -34,15 +34,15 @@
       "src": "https://github.com/webhooked/kanso.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "0c2823e0418f3d9230ff8b201c976e84de1cb401",
+      "rev": "7b01e2974a47d489bb92f47a41e4c0088ea8f86e",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason.nvim": {
-      "rev": "cb8445f8ce85d957416c106b780efd51c6298f89",
+      "rev": "bb639d4bf385a4d89f478b83af4d770be05ab7eb",
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "be81509b7160aa02264a59789164a2e1c4a6750a",
+      "rev": "a405061478d8027b4e21214d897ce1eb33115792",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "modus-themes.nvim": {
@@ -54,11 +54,11 @@
       "src": "https://github.com/karb94/neoscroll.nvim"
     },
     "nvim-autopairs": {
-      "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
+      "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
       "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-lspconfig": {
-      "rev": "6419b36f50c42420cbbf1d3ffba573094cf414c8",
+      "rev": "a4ed4e761c400849e8c9f8bda33e5083f890268c",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
@@ -78,7 +78,7 @@
       "src": "https://github.com/sphamba/smear-cursor.nvim"
     },
     "telescope.nvim": {
-      "rev": "506338434fec5ad19cb1f8d45bf92d66c4917393",
+      "rev": "7d324792b7943e4aa16ad007212e6acc6f9fe335",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "typst-preview.nvim": {

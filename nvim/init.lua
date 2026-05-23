@@ -6,8 +6,6 @@ vim.o.relativenumber = true
 
 vim.g.have_nerd_font = true
 
--- Go back to nvim .
--- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>pv", "<CMD>Oil<CR>")
 
 local undodir = vim.fn.expand("~/.vim/undodir")
@@ -44,6 +42,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Centers cursor to the center of the page for half page jumping
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+vim.keymap.set("n", "j", "jzz")
+vim.keymap.set("n", "k", "kzz")
 -- Centers cursor to the center for search jumping
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
@@ -360,7 +361,7 @@ vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Fi
 vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 vim.keymap.set("n", "<leader>/", function()
 	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-		winblend = 10,
+		winblend = 5,
 		previewer = false,
 	}))
 end, { desc = "[/] Fuzzily search in current buffer" })
