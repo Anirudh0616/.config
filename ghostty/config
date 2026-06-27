@@ -1,7 +1,7 @@
 font-size = 32 
 # font-family = "Px437 IBM VGA 8x16"
 #
-theme = base16-black-metal
+theme = carbonfox 
 palette-generate = false
 background-opacity-cells=true
 

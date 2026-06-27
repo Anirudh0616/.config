@@ -3,12 +3,13 @@ configstore/
 StardewValley/
 linearmouse/
 neofetch/
-ancient/
 nvim/undodir/
 gh/
+ancient/
+.DS_STORE
 karabiner/automatic_backups
 lazy-lock.json
 nvim/lazy-lock.json
 tmux-client-*.log
 nvim/lazy-lock.json
-
+*.log
