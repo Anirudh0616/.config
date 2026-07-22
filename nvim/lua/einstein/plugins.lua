@@ -13,13 +13,40 @@ vim.pack.add({
   { src = "https://github.com/mason-org/mason.nvim.git" },
   { src = "https://github.com/neovim/nvim-lspconfig.git" },
   { src = "https://github.com/mason-org/mason-lspconfig.nvim.git" },
-  { src = "https://github.com/saghen/blink.cmp" },
+  { src = "https://github.com/saghen/blink.cmp", version = "v1.10.0" },
   { src = "https://github.com/nvim-mini/mini.pairs.git" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter.git" },
   { src = "https://github.com/windwp/nvim-ts-autotag.git" },
   { src = "https://github.com/j-hui/fidget.nvim.git" },
   { src = "https://github.com/Myriad-Dreamin/tinymist.git" },
+  { src = "https://github.com/nikolvs/vim-sunbather" },
+  -- { src = "https://github.com/Anirudh0616/docright.nvim", name = "docright.nvim",},
+	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
+
 })
+
+vim.opt.rtp:prepend("/Users/newton/dev/projects/docright")
+
+-- require("docright").setup({
+--   provider = "ollama",
+--   model = "qwen2.5-coder:7b", -- or the model name that you are using
+--   endpoint = "http://127.0.0.1:11434/api/generate",
+-- 	system_prompt = [[
+-- You are DocRight, a concise programming documentation assistant.
+-- Only answer questions about code and software engineering. 
+-- ]],
+-- })
+--
+require("docright").setup({
+  provider = "ollama",
+  model = "qwen2.5-coder:7b",
+  endpoint = "http://127.0.0.1:11434/api/generate",
+  system_prompt = [[
+    You are DocRight, a Neovim documentation assistant. Only answer questions about programming languages, source code, APIs, libraries, frameworks, developer tooling, compilers, runtimes, and software engineering concepts. If the request is not about programming, refuse briefly and say you can only help with programming documentation. Base your answer on the provided code or symbol when possible. Use a compact documentation-reference style. No intro, no outro, no broad tutorial. Prefer bullets shaped like `name`: what it does. Mention only the important components, parameters, return values, side effects, or gotchas visible in the code. 
+]],
+})
+
+
 require("oil").setup()
 require("oil-git").setup()
 require("mason").setup()
@@ -55,6 +82,15 @@ vim.lsp.config("clangd", {
   capabilities = capabilities,
 })
 
+-- require("docright").setup({
+--   provider = "ollama",
+--   model = "qwen2.5-coder:7b", -- or the model name that you are using
+--   endpoint = "http://127.0.0.1:11434/api/generate",
+-- 	mappings = {
+--     document = "<leader>ad",
+--     ask = "<leader>aa",
+--   },
+-- })
 vim.lsp.config("lua_ls", {
   capabilities = capabilities,
   settings = {
@@ -134,5 +170,6 @@ require("mini.pairs").setup()
 require("ibl").setup()
 require("nvim-ts-autotag").setup()
 require("fidget").setup({})
+require("typst-preview").setup({})
 
-vim.cmd("colorscheme carbonfox")
+vim.cmd("colorscheme sunbather")

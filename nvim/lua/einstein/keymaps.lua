@@ -5,7 +5,8 @@ local map = vim.keymap.set
 map("n", "<leader>v", ":vsplit<CR>", opts)
 
 map("n", "<C-F>", "<Cmd>Open .<CR>", opts)
-map("n", "<leader>pp", "<Cmd>Oil<CR>", opts)
+map("n", "<leader>pv", "<Cmd>Oil<CR>", opts)
+map("n", "<leader>pp", require("oil").toggle_float, opts)
 map("n", "<leader>u", "<Cmd>UndotreeToggle<CR>", { desc = "[T]oggle [U]ndotree" })
 
 map("n", "<leader>f", "<Cmd>Telescope find_files<CR>", opts)
