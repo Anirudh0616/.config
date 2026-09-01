@@ -20,6 +20,7 @@ vim.pack.add({
   { src = "https://github.com/j-hui/fidget.nvim.git" },
   { src = "https://github.com/Myriad-Dreamin/tinymist.git" },
   { src = "https://github.com/nikolvs/vim-sunbather" },
+  { src = "https://github.com/tpope/vim-fugitive" },
   -- { src = "https://github.com/Anirudh0616/docright.nvim", name = "docright.nvim",},
 	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
 
@@ -171,5 +172,6 @@ require("ibl").setup()
 require("nvim-ts-autotag").setup()
 require("fidget").setup({})
 require("typst-preview").setup({})
+-- require("vim-fugitive").setup({})
 
 vim.cmd("colorscheme sunbather")

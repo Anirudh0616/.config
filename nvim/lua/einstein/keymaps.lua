@@ -4,6 +4,8 @@ local map = vim.keymap.set
 -- map("n", "<leader>o", ":update<CR>:source<CR>", opts)
 map("n", "<leader>v", ":vsplit<CR>", opts)
 
+map("n","<leader>tp", ":TypstPreview<CR>", opts)
+
 map("n", "<C-F>", "<Cmd>Open .<CR>", opts)
 map("n", "<leader>pv", "<Cmd>Oil<CR>", opts)
 map("n", "<leader>pp", require("oil").toggle_float, opts)
@@ -12,6 +14,9 @@ map("n", "<leader>u", "<Cmd>UndotreeToggle<CR>", { desc = "[T]oggle [U]ndotree" 
 map("n", "<leader>f", "<Cmd>Telescope find_files<CR>", opts)
 -- map("n", "<leader>r", "<Cmd>Telescope buffers<CR>", opts)
 map("n", "<leader>g", "<Cmd>Telescope live_grep<CR>", opts)
+
+map("n", "<leader>gs", "<Cmd>Git<CR>", opts)
+
 
 local telescope_builtin = require("telescope.builtin")
 local telescope_themes = require("telescope.themes")
@@ -88,6 +93,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     lsp_map("grt", telescope_builtin.lsp_type_definitions, "[G]oto [T]ype Definition")
   end,
 })
+
 
 local harpoon = require("harpoon")
 
