@@ -185,3 +185,33 @@ require("typst-preview").setup({})
 -- require("vim-fugitive").setup({})
 
 vim.cmd("colorscheme alduin")
+
+-- Unify backgrounds: alduin paints the gutter (LineNr #121212, SignColumn #080808)
+-- darker than the editor bg (#1c1c1c), and Neovim's default NormalFloat used by
+-- oil.nvim's floating window is #080808. Strip those background fills so the
+-- whole UI sits on one uniform background; all foreground colors stay untouched.
+local function unify_backgrounds()
+  for _, name in ipairs({ "LineNr", "CursorLineNr", "SignColumn", "FoldColumn", "Folded", "CursorColumn" }) do
+      local hl = vim.api.nvim_get_hl(0, { name = name, link = true })
+      if hl and next(hl) then
+        hl.bg = nil
+        hl.ctermbg = nil
+        vim.api.nvim_set_hl(0, name, hl)
+      end
+    end
+
+    -- Floating windows (oil.nvim, pickers, LSP hover): use the Normal background.
+    local normal = vim.api.nvim_get_hl(0, { name = "Normal", link = true })
+    if normal and normal.bg then
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = normal.bg })
+      vim.api.nvim_set_hl(0, "FloatBorder", { bg = normal.bg })
+    end
+  -- TUI can't render blend, so the default FloatShadow draws as a solid dark
+  -- ring around floats; make it transparent for the same uniform look.
+  vim.api.nvim_set_hl(0, "FloatShadow", { bg = nil })
+end
+
+-- Apply now (the colorscheme already loaded above, so the ColorScheme event has
+-- already fired) and re-apply whenever the colorscheme changes later.
+unify_backgrounds()
+vim.api.nvim_create_autocmd("ColorScheme", { pattern = "*", callback = unify_backgrounds })
