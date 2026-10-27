@@ -5,3 +5,9 @@ theme = carbonfox
 palette-generate = false
 background-opacity-cells=true
 
+# carbonfox's default background (#161616) is darker than alduin's (nvim)
+# Normal background (#1c1c1c), which showed up as jet-black patches wherever
+# nvim drew cells without an explicit bg (e.g. the ~ end-of-buffer rows).
+# Match the terminal backdrop to the editor background for uniformity.
+background = #1c1c1c
+

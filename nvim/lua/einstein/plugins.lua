@@ -24,6 +24,7 @@ vim.pack.add({
   { src = "https://github.com/tpope/vim-fugitive" },
   -- { src = "https://github.com/Anirudh0616/docright.nvim", name = "docright.nvim",},
 	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
+	{ src = "https://github.com/AlessandroYorba/Alduin" },
 
 })
 
@@ -183,4 +184,4 @@ require("fidget").setup({})
 require("typst-preview").setup({})
 -- require("vim-fugitive").setup({})
 
-vim.cmd("colorscheme sunbather")
+vim.cmd("colorscheme alduin")

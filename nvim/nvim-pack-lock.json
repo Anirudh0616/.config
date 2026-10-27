@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "Alduin": {
+      "rev": "6575a0f167fef521c404681b96caebdb2b9cc4cd",
+      "src": "https://github.com/AlessandroYorba/Alduin"
+    },
     "LuaSnip": {
       "rev": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24",
       "src": "git@github.com:L3MON4D3/LuaSnip"

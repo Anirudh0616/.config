@@ -47,17 +47,29 @@ palette = "cole"
 # iris    = '#cae0a7'      # green
 # silver  = '#f8f9e8'      # foreground
 
+# [palettes.cole]
+# overlay = '#101010'
+# surface = '#121212'
+# border  = '#3d3d3d'
+# silver  = '#f2e6cf'
+# love    = '#cc5d4b'
+# gold    = '#b38d59'
+# rose    = '#cc9b52'
+# pine    = '#3d3d3d'
+# foam    = '#2e9969'
+# iris    = '#66cc69'
+
 [palettes.cole]
-overlay = '#101010'
-surface = '#121212'
-border  = '#3d3d3d'
-silver  = '#f2e6cf'
-love    = '#cc5d4b'
-gold    = '#b38d59'
-rose    = '#cc9b52'
-pine    = '#3d3d3d'
-foam    = '#2e9969'
-iris    = '#66cc69'
+overlay = '#1f1f28'
+surface = '#16161d'
+border  = '#363646'
+silver  = '#dcd7ba'
+love    = '#e46876'
+gold    = '#dca561'
+rose    = '#d27e99'
+pine    = '#2d4f67'
+foam    = '#6a9589'
+iris    = '#7e9cd8'
 
 [directory]
 format = "[](fg:overlay)[ $path ]($style)[](fg:overlay) "
