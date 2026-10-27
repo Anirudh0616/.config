@@ -412,7 +412,6 @@
                 }
             ],
             "name": "Changed one",
-            "selected": true,
             "simple_modifications": [
                 {
                     "from": { "key_code": "caps_lock" },
@@ -442,6 +441,7 @@
                 }
             ],
             "name": "Default settibngs",
+            "selected": true,
             "simple_modifications": [
                 {
                     "from": { "key_code": "caps_lock" },

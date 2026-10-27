@@ -15,6 +15,7 @@ vim.pack.add({
   { src = "https://github.com/mason-org/mason-lspconfig.nvim.git" },
   { src = "https://github.com/saghen/blink.cmp", version = "v1.10.0" },
   { src = "https://github.com/nvim-mini/mini.pairs.git" },
+  { src = "https://github.com/nvim-mini/mini.surround" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter.git" },
   { src = "https://github.com/windwp/nvim-ts-autotag.git" },
   { src = "https://github.com/j-hui/fidget.nvim.git" },
@@ -38,15 +39,22 @@ vim.opt.rtp:prepend("/Users/newton/dev/projects/docright")
 -- ]],
 -- })
 --
-require("docright").setup({
-  provider = "ollama",
-  model = "qwen2.5-coder:7b",
-  endpoint = "http://127.0.0.1:11434/api/generate",
-  system_prompt = [[
-    You are DocRight, a Neovim documentation assistant. Only answer questions about programming languages, source code, APIs, libraries, frameworks, developer tooling, compilers, runtimes, and software engineering concepts. If the request is not about programming, refuse briefly and say you can only help with programming documentation. Base your answer on the provided code or symbol when possible. Use a compact documentation-reference style. No intro, no outro, no broad tutorial. Prefer bullets shaped like `name`: what it does. Mention only the important components, parameters, return values, side effects, or gotchas visible in the code. 
-]],
-})
+-- require("docright").setup({
+--   provider = "ollama",
+--   model = "qwen2.5-coder:7b",
+--   endpoint = "http://127.0.0.1:11434/api/generate",
+--   system_prompt = [[
+--     You are DocRight, a Neovim documentation assistant. Only answer questions about programming languages, source code, APIs, libraries, frameworks, developer tooling, compilers, runtimes, and software engineering concepts. If the request is not about programming, refuse briefly and say you can only help with programming documentation. Base your answer on the provided code or symbol when possible. Use a compact documentation-reference style. No intro, no outro, no broad tutorial. Prefer bullets shaped like `name`: what it does. Mention only the important components, parameters, return values, side effects, or gotchas visible in the code. 
+-- ]],
+-- })
 
+require("docright").setup({
+  provider = "openrouter",
+  model = "openai/gpt-4o-mini",
+--   system_prompt = [[
+--     You are DocRight, a Neovim documentation assistant. Only answer questions about programming languages, source code, APIs, libraries, frameworks, developer tooling, compilers, runtimes, and software engineering concepts. If the request is not about programming, refuse briefly and say you can only help with programming documentation. Base your answer on the provided code or symbol when possible. Use a compact documentation-reference style. No intro, no outro, no broad tutorial. Prefer bullets shaped like `name`: what it does. Mention only the important components, parameters, return values, side effects, or gotchas visible in the code. 
+-- ]],
+})
 
 require("oil").setup()
 require("oil-git").setup()
@@ -168,6 +176,7 @@ pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "ui-select")
 require("harpoon").setup()
 require("mini.pairs").setup()
+require("mini.surround").setup()
 require("ibl").setup()
 require("nvim-ts-autotag").setup()
 require("fidget").setup({})
